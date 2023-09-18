@@ -1,2 +1,5 @@
 .env
 Venv/
+deck_builder/ocr/test_image.png
+image.png
+.vscode/
