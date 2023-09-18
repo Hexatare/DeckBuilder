@@ -11,6 +11,10 @@ message = [ {"role": "user", "content":
 
 
 def get_list(bigassstring):
+    """
+    Takes one big string with assorted terms (no commas?) and makes ChatGPT generate one list with tuples as a string.
+    The string is then transformed into a list, which is then returned.
+    """
     prompter = "Here are random terms: \""+bigassstring+"\". Generate a list with. Each tuple should contain the term and description or meaning as a string. DO NOT FORMAT THE RETURNED STRING - keep it one single line long."
     message = [ {"role": "user", "content": 
         prompter} ]
@@ -24,9 +28,6 @@ def get_list(bigassstring):
         messages=message
     )
 
-    return completion.choices[0].message.content
-
-
-stringA = get_list("World war one half-life football cow water bottle Cristiano Ronaldo")
-res = ast.literal_eval(stringA)
-print(res)
+    stringA = completion.choices[0].message.content
+    res = ast.literal_eval(stringA)
+    return res
