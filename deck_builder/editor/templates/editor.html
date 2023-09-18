@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - Deck Builder</title>
+    <meta name="description" content="Upload an image and download the Anki questions with answers!">
+
+    <link rel="stylesheet" href="{{ url_for('editor_bp.static', filename='styles/editor.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="{{ url_for('editor_bp.static', filename='js/editor.js')}}" defer></script>
+</head>
+
+<body>
+    <aside class="navbar-wrapper">
+        <div class="navbar">
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Dashboard</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Profile</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Account settings</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-logout-element-text">Log out</p>
+            </div>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="page-header">
+            <h1>Editor</h1>
+            <p>Create your export here.</p>
+        </div>
+        <div class="page-divider"></div>
+        <div class="page-content">
+            <h2 class="page-content-header">Select your upload method</h2>
+            <div class="select-upload-method-wrapper">
+                <div class="select-upload-method selected" id="select-image-upload">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="upload-method-icon">
+                        <path fill="none" d="M0 0h24v24H0V0z"></path>
+                        <path d="M5 19h14V5H5v14zm4-5.86l2.14 2.58 3-3.87L18 17H6l3-3.86z" opacity=".3"></path>
+                        <path
+                            d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-4.86-7.14l-3 3.86L9 13.14 6 17h12z">
+                        </path>
+                    </svg>
+                    <p class="select-upload-method-text">Upload Image</p>
+                </div>
+                <div class="select-upload-method" id="select-text-input">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="upload-method-icon">
+                        <path
+                            d="M22,7.24a1,1,0,0,0-.29-.71L17.47,2.29A1,1,0,0,0,16.76,2a1,1,0,0,0-.71.29L13.22,5.12h0L2.29,16.05a1,1,0,0,0-.29.71V21a1,1,0,0,0,1,1H7.24A1,1,0,0,0,8,21.71L18.87,10.78h0L21.71,8a1.19,1.19,0,0,0,.22-.33,1,1,0,0,0,0-.24.7.7,0,0,0,0-.14ZM6.83,20H4V17.17l9.93-9.93,2.83,2.83ZM18.17,8.66,15.34,5.83l1.42-1.41,2.82,2.82Z">
+                        </path>
+                    </svg>
+                    <p class="select-upload-method-text">Enter text</p>
+                </div>
+            </div>
+            <div class="upload-image-wrapper" id="upload-image-wrapper">
+                <input type="file" name="image-input" id="image-input" class="image-input hidden">
+                <label for="image-input" class="image-input">
+                    <span>Click to upload</span>
+                    <span class="colored-text">or drag and drop</span>
+                </label>
+            </div>
+            <div class="upload-text-wrapper hidden" id="upload-text-wrapper">
+                <textarea name="upload-text-input" id="upload-text-input" class="upload-text-input"
+                    placeholder="Enter your text here..."></textarea>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
