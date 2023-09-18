@@ -3,7 +3,7 @@ import json
 import ast
 
 
-openai.api_key = "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"
+openai.api_key = "API KEY HERE"
 
 model_engine = "gpt-3.5-turbo"
 message = [ {"role": "user", "content": 
@@ -12,7 +12,7 @@ message = [ {"role": "user", "content":
 
 def get_list(bigassstring):
     """
-    Takes one big string with assorted terms (no commas?) and makes ChatGPT generate one list with tuples as a string.
+    Takes one big string with assorted terms (do not use commas) and makes ChatGPT generate one list with tuples as a string.
     The string is then transformed into a list, which is then returned.
     """
     prompter = "Here are random terms: \""+bigassstring+"\". Generate a list with. Each tuple should contain the term and description or meaning as a string. DO NOT FORMAT THE RETURNED STRING - keep it one single line long."
