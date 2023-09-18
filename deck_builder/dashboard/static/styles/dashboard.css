@@ -1,0 +1,106 @@
+:root {
+    --color-primary: #3792CB;
+    --color-danger-light: #F69697;
+    --color-danger-dark: #FF2C2C;
+    --color-success: #B3CF99;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: rgb(241, 241, 241);
+    --color-disabled: #ccccc4;
+
+    --box-shadow: rgba(0, 0, 0, 0.05) 5px 0px 15px, rgba(0, 0, 0, 0.03) 4px 0px 6px;
+
+    --font-family: 'Poppins', sans-serif;
+
+    --border-radius: 8px;
+}
+
+.darkmode {
+    --color-background: #181a1e;
+    --color-white: #202528;
+    --color-dark: #edeffd;
+    --color-dark-variant: #a3bdcc;
+    --color-light: rgba(0, 0, 0, 0.4);
+    --color-disabled: #767676;
+}
+
+*,
+::before,
+::after {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+.hidden {
+    display: none !important;
+}
+
+html,
+body {
+    display: flex;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: var(--color-background);
+}
+
+.main {
+    display: flex;
+    width: 100% !important;
+    height: 100% !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 36px;
+    background-color: var(--color-background);
+}
+
+.page-header {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100px;
+    gap: 8px;
+}
+
+.picture-input-label {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    border-radius: var(--border-radius);
+    border: 4px dashed var(--color-light);
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.input-text-colored {
+    color: var(--color-primary)
+}
+
+.text-input {
+    width: 100%;
+    resize: none;
+}
