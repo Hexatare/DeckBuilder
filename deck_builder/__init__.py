@@ -40,6 +40,7 @@ def init_app():
         # Register blueprints
         app.register_blueprint(auth_routes.auth_bp)
         app.register_blueprint(homepage_routes.homepage_bp)
+        app.register_blueprint(text_to_deck_routes.text_to_deck_bp)
 
         # Create database models
         db.create_all()
