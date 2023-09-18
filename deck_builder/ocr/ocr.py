@@ -1,4 +1,4 @@
-"""Module providing a Function image_to_text using keras-ocr"""
+"""Module providing a function image_to_text using keras-ocr"""
 
 import numpy as np
 import numpy.typing as nptyping
