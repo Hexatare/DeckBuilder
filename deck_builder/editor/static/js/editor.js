@@ -46,7 +46,7 @@ function sendImage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                window.location.href = `/edit/${data['id']}`
             });
     }
 }
@@ -74,6 +74,8 @@ imageInputLabel.addEventListener('drop', function (event) {
 
 const textInput = document.getElementById('upload-text-input');
 const submitTextButton = document.getElementById('submit-text');
+const buttonText = document.getElementById('submit-button-text');
+const loadingIcon = document.getElementById('loading-icon');
 
 textInput.addEventListener('input', function () {
     if (textInput.value.length > 0) {
@@ -84,6 +86,9 @@ textInput.addEventListener('input', function () {
 });
 
 submitTextButton.addEventListener('click', function () {
+    submitTextButton.disabled = true;
+    buttonText.classList.add('hidden');
+    loadingIcon.classList.remove('hidden');
     const enteredText = textInput.value;
 
     fetch('/upload/text', {
@@ -97,8 +102,6 @@ submitTextButton.addEventListener('click', function () {
     })
         .then(response => response.json())
         .then(data => {
-            fileContents = data['file_contents'];
-
-            console.log(fileContents);
+            window.location.href = `/edit/${data['id']}`
         });
 });
