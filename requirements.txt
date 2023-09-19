@@ -1,7 +1,5 @@
 numpy 
-wheel
-opencv-python
-keras_ocr
+keras-ocr
 tensorflow
 astroid
 blinker
