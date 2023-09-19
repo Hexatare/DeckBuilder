@@ -3,6 +3,8 @@
 
 # Imports
 from flask import Blueprint, request, jsonify
+
+# pylint: disable=no-name-in-module
 from . import ocr
 
 
