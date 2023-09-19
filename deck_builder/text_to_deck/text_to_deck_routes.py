@@ -24,5 +24,4 @@ def text_to_deck():
     text = data["text"]
     cards = get_list(text)
     deck = gpt_to_deck(cards)
-    deck = "front of card; back of card"
     return jsonify(file_contents=deck), 200
