@@ -27,8 +27,13 @@ selectText.addEventListener('click', function () {
 });
 
 const imageInput = document.getElementById('image-input');
+const imageInputLabel = document.getElementById('image-input-label');
 
-imageInput.addEventListener('change', function () {
+imageInputLabel.addEventListener('change', function () {
+    sendImage();
+});
+
+function sendImage() {
     const uploadedFile = imageInput.files[0];
 
     if (uploadedFile) {
@@ -44,11 +49,39 @@ imageInput.addEventListener('change', function () {
                 console.log(data);
             });
     }
+}
+
+imageInputLabel.addEventListener('dragenter', function (event) {
+    event.preventDefault();
+    imageInputLabel.classList.add('active');
 });
 
-/*
-const textInput = document.getElementById('text-input');
+imageInputLabel.addEventListener('dragover', function (event) {
+    event.preventDefault();
+});
+
+imageInputLabel.addEventListener('dragleave', function (event) {
+    event.preventDefault();
+    imageInputLabel.classList.remove('active');
+});
+
+imageInputLabel.addEventListener('drop', function (event) {
+    event.preventDefault();
+    imageInputLabel.classList.remove('active');
+    sendImage();
+});
+
+
+const textInput = document.getElementById('upload-text-input');
 const submitTextButton = document.getElementById('submit-text');
+
+textInput.addEventListener('input', function () {
+    if (textInput.value.length > 0) {
+        submitTextButton.disabled = false;
+    } else {
+        submitTextButton.disabled = true;
+    }
+});
 
 submitTextButton.addEventListener('click', function () {
     const enteredText = textInput.value;
@@ -69,4 +102,3 @@ submitTextButton.addEventListener('click', function () {
             console.log(fileContents);
         });
 });
-*/

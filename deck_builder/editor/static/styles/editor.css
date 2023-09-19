@@ -239,5 +239,37 @@ body {
 }
 
 .image-input:hover {
+    border: 3px dashed var(--color-info-dark);
+}
+
+.image-input.active {
     border: 3px dashed var(--color-dark);
+}
+
+.upload-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    height: fit-content;
+}
+
+.upload-text-submit-button {
+    width: 100%;
+    height: 50px;
+    border: 2px solid transparent;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.upload-text-submit-button:hover {
+    border: 2px solid var(--color-dark);
+}
+
+.upload-text-submit-button:disabled {
+    border: 2px solid transparent !important;
+    cursor: not-allowed !important;
+    background-color: var(--color-disabled) !important;
 }

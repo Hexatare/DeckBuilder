@@ -45,7 +45,7 @@
         <div class="page-content">
             <h2 class="page-content-header">Select your upload method</h2>
             <div class="select-upload-method-wrapper">
-                <div class="select-upload-method selected" id="select-image-upload">
+                <div class="select-upload-method" id="select-image-upload">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="upload-method-icon">
                         <path fill="none" d="M0 0h24v24H0V0z"></path>
                         <path d="M5 19h14V5H5v14zm4-5.86l2.14 2.58 3-3.87L18 17H6l3-3.86z" opacity=".3"></path>
@@ -55,7 +55,7 @@
                     </svg>
                     <p class="select-upload-method-text">Upload Image</p>
                 </div>
-                <div class="select-upload-method" id="select-text-input">
+                <div class="select-upload-method selected" id="select-text-input">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="upload-method-icon">
                         <path
                             d="M22,7.24a1,1,0,0,0-.29-.71L17.47,2.29A1,1,0,0,0,16.76,2a1,1,0,0,0-.71.29L13.22,5.12h0L2.29,16.05a1,1,0,0,0-.29.71V21a1,1,0,0,0,1,1H7.24A1,1,0,0,0,8,21.71L18.87,10.78h0L21.71,8a1.19,1.19,0,0,0,.22-.33,1,1,0,0,0,0-.24.7.7,0,0,0,0-.14ZM6.83,20H4V17.17l9.93-9.93,2.83,2.83ZM18.17,8.66,15.34,5.83l1.42-1.41,2.82,2.82Z">
@@ -64,16 +64,17 @@
                     <p class="select-upload-method-text">Enter text</p>
                 </div>
             </div>
-            <div class="upload-image-wrapper" id="upload-image-wrapper">
+            <div class="upload-image-wrapper hidden" id="upload-image-wrapper">
                 <input type="file" name="image-input" id="image-input" class="image-input hidden">
-                <label for="image-input" class="image-input">
+                <label for="image-input" class="image-input" id="image-input-label">
                     <span>Click to upload</span>
                     <span class="colored-text">or drag and drop</span>
                 </label>
             </div>
-            <div class="upload-text-wrapper hidden" id="upload-text-wrapper">
+            <div class="upload-text-wrapper" id="upload-text-wrapper">
                 <textarea name="upload-text-input" id="upload-text-input" class="upload-text-input"
                     placeholder="Enter your text here..."></textarea>
+                <button class="upload-text-submit-button" id="submit-text" disabled>Submit text</button>
             </div>
         </div>
     </main>
