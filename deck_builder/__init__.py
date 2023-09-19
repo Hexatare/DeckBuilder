@@ -36,6 +36,7 @@ def init_app():
         from .homepage import homepage_routes
         from .auth import auth_routes
         from .dashboard import dashboard_routes
+        from .text_to_deck import text_to_deck_routes
         # pylint: enable=import-outside-toplevel
 
         # Register blueprints
