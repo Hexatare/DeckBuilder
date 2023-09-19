@@ -1,10 +1,10 @@
 """Module providing a function image_to_text using keras-ocr"""
 
 import string
-import keras_ocr
-from PIL import Image
 import base64
 import io
+import keras_ocr
+from PIL import Image
 
 
 # keras-ocr will automatically download pretrained

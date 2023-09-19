@@ -3,7 +3,7 @@
 
 # Imports
 from flask import Blueprint, request, jsonify
-from ocr import image_to_text
+from . import ocr
 
 
 # Create the Blueprint
@@ -17,11 +17,11 @@ ocr_bp: Blueprint = Blueprint(
 
 
 @ocr_bp.route("/upload/image", methods=["POST"])
-def ocr():
+def ocr_endpoint():
     """
     This endpoint gets an image from which it extracts the text
     """
     data = request.get_json()
     image = data["image"]
-    text = image_to_text(image)
+    text = ocr.image_to_text(image)
     return jsonify(text), 200
