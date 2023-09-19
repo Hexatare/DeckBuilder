@@ -22,7 +22,8 @@ def text_to_deck():
     """
     data = request.get_json()
     text = data["text"]
-    cards = get_list(text)
-    deck = gpt_to_deck(cards)
-    deck = "front of card; back of card"
-    return jsonify(file_contents=deck), 200
+    status,cards = get_list(text)
+    if status=="success":
+        deck = gpt_to_deck(cards)
+        return jsonify(file_contents=deck), 200
+    return jsonify(cards), 200
