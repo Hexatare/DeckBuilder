@@ -14,5 +14,6 @@
       python310Packages.python-dotenv
       python310Packages.mysqlclient
       python310Packages.openai
+      python310Packages.keras
     ];
 }
