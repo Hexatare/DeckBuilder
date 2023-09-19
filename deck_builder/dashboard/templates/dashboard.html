@@ -17,12 +17,40 @@
 </head>
 
 <body>
+    <aside class="navbar-wrapper">
+        <div class="navbar">
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Dashboard</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Profile</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-elemement-text">Account settings</p>
+            </div>
+            <div class="divider"></div>
+            <div class="navbar-element">
+                <p class="navbar-logout-element-text">Log out</p>
+            </div>
+        </div>
+    </aside>
     <main class="main">
         <div class="page-header">
-            <h1>Welcome!</h1>
-            <p>Please upload an image to get started.</p>
+            <h1>Welcome back, {{ first_name }}</h1>
+            <p>What's on your mind today?</p>
         </div>
+        <div class="page-divider"></div>
         <div class="page-content">
+            <div class="page-content-element-create">
+                <p class="create-plus">+</p>
+                <p class="create-text">Create new</p>
+            </div>
+            <div class="page-content-element">
+
+            </div>
+            <!--
             <div class="input-section">
                 <input type="file" accept=".png, .jpg, .jpeg" class="picture-input hidden" id="picture-input">
                 <label for="picture-input" class="picture-input-label">
@@ -37,6 +65,7 @@
             <div class="output-section">
 
             </div>
+            -->
         </div>
     </main>
 </body>
