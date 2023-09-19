@@ -1,7 +1,8 @@
 """This file contains the route for the text to deck"""
 
-from flask import Blueprint, jsonify, request
-from anki_deck_creation import gpt_to_deck
+from flask import Blueprint, jsonify
+from .anki_deck_creation import gpt_to_deck
+from .chatgpt_api import get_list
 
 
 # Create the Blueprint
@@ -21,7 +22,7 @@ def text_to_deck():
     """
     data = request.get_json()
     text = data["text"]
-    cards = [("this is the front of a card", "this is the back of a card")]
+    cards = get_list(text)
     deck = gpt_to_deck(cards)
     deck = "front of card; back of card"
     return jsonify(file_contents=deck), 200
