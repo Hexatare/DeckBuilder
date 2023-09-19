@@ -20,7 +20,7 @@ def gpt_to_deck(cards):
 
     try:
         iter(cards)
-    except:
+    except Exception:
         raise ValueError
     
     for card in cards:
