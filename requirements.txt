@@ -1,4 +1,5 @@
 numpy 
+wheel
 opencv-python
 keras_ocr
 tensorflow
@@ -17,8 +18,6 @@ Jinja2
 lazy-object-proxy
 MarkupSafe
 mccabe
-mysql
-mysqlclient
 openai
 Pillow
 platformdirs
