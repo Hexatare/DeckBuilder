@@ -20,10 +20,20 @@ def text_to_deck():
     """
     This endpoint gets a text from which it generates Anki flashcards
     """
-    data = request.get_json()
-    text = data["text"]
-    status,cards = get_list(text)
-    if status=="success":
-        deck = gpt_to_deck(cards)
+    # Get the text
+    data: dict = request.get_json()
+    text: str = data["text"]
+
+    # Get the cards
+    status: str
+    cards: list[tuple] | str
+    status, cards = get_list(text)
+
+    # Check if generating the cards was succesful
+    if status == "success":
+        # Get the deck using the gpt_to_deck() function
+        deck: str = gpt_to_deck(cards)
+        
         return jsonify(file_contents=deck), 200
-    return jsonify(cards), 200
+    
+    return jsonify(cards=cards), 200
