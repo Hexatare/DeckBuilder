@@ -19,9 +19,7 @@ pipeline = keras_ocr.pipeline.Pipeline(
 def image_to_text(img: str) -> str:
     """
     Convert an image to text.
-
-        Args:
-            img: A base-64 encoded image
+    :param str img: A base-64 encoded image
     """
 
     base64_decoded = base64.b64decode(img)
@@ -47,4 +45,3 @@ def image_to_text(img: str) -> str:
         lines[-1].sort(key=lambda word: word[1][0][0])
 
     return " ".join([" ".join([word[0] for word in line]) for line in lines])
-
