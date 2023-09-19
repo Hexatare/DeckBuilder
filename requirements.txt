@@ -19,6 +19,8 @@ MarkupSafe
 mccabe
 mysql
 mysqlclient
+openai
+Pillow
 platformdirs
 pylint
 PyMySQL
