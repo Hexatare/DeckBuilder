@@ -29,7 +29,7 @@ selectText.addEventListener('click', function () {
 const imageInput = document.getElementById('image-input');
 const imageInputLabel = document.getElementById('image-input-label');
 
-imageInputLabel.addEventListener('change', function () {
+imageInput.addEventListener('change', function () {
     sendImage();
 });
 
@@ -40,13 +40,13 @@ function sendImage() {
         const formData = new FormData();
         formData.append('image', uploadedFile);
 
-        fetch('/upload/image', {
+        fetch('/create/upload/image', {
             method: 'POST',
             body: formData,
         })
             .then(response => response.json())
             .then(data => {
-                window.location.href = `/edit/${data['id']}`
+                console.log(data['text'])
             });
     }
 }
@@ -91,17 +91,17 @@ submitTextButton.addEventListener('click', function () {
     loadingIcon.classList.remove('hidden');
     const enteredText = textInput.value;
 
-    fetch('/upload/text', {
+    fetch('/create/upload/text', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: {
+        body: JSON.stringify({
             text: enteredText,
-        }
+        })
     })
         .then(response => response.json())
         .then(data => {
-            window.location.href = `/edit/${data['id']}`
+            console.log(data['success']);
         });
 });

@@ -1,5 +1,5 @@
 """This file contains the database models"""
-
+# pylint: disable=too-few-public-methods
 
 # Imports
 from flask_login import UserMixin
@@ -51,3 +51,60 @@ class User(UserMixin, db.Model):
     def check_password(self, password: str) -> bool:
         """Function to check if the password is correct"""
         return check_password_hash(self.password, password)
+
+
+class Export(db.Model):
+    """The model for an export"""
+
+    # Name of the table in the database
+    __tablename__ = 'exports'
+
+    # Id column
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    # When the export was created
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False
+    )
+
+
+class Flashcard(db.Model):
+    """The model for a flashcard"""
+
+    # Name of the table in the database
+    __tablename__ = 'flashcards'
+
+    # Id column
+    id = db.Column(
+        db.Integer,
+        primary_key=True
+    )
+
+    # The export the card is from
+    export_id = db.Column(
+        db.Integer,
+        db.ForeignKey('exports.id'),
+        nullable=False
+    )
+
+    front = db.Column(
+        db.String(255),
+        nullable=False,
+        default=''
+    )
+
+    back = db.Column(
+        db.String(255),
+        nullable=False,
+        default=''
+    )
+
+    # When the flashcard was created
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False
+    )
