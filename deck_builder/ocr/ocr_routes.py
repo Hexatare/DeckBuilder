@@ -3,7 +3,7 @@
 
 # Imports
 from flask import Blueprint, request, jsonify
-import ocr
+from . import ocr
 
 
 # Create the Blueprint
