@@ -1,0 +1,125 @@
+html,
+body,
+.main {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    flex-direction: row;
+    padding: 50px;
+    background-color: var(--color-background);
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    background-color: var(--color-white);
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    justify-content: center;
+    align-items: center;
+    padding: 0 100px;
+    gap: 16px;
+}
+
+.right {
+    display: flex;
+    height: 100%;
+    width: 50%;
+    background-color: var(--color-danger-light);
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.left-header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+}
+
+.left-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 12px;
+}
+
+.email-input,
+.password-input {
+    width: 100%;
+    height: 45px;
+    border-radius: var(--border-radius);
+    border: 2px solid var(--color-light);
+    outline: none;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.email-input:focus,
+.password-input:focus {
+    border: 2px solid var(--color-dark)
+}
+
+.submit-form {
+    width: 100%;
+    height: 45px;
+    background-color: var(--color-primary);
+    border: 2px solid transparent;
+    outline: none;
+    color: var(--color-dark);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.submit-form:hover {
+    border: 2px solid var(--color-dark)
+}
+
+.submit-form:disabled {
+    border: 2px solid transparent !important;
+    background-color: var(--color-disabled) !important;
+    cursor: not-allowed !important;
+}
+
+.left-heading {
+    font-size: 30px;
+    color: var(--color-dark)
+}
+
+.left-subheading {
+    color: var(--color-info-dark);
+}
+
+.name-inputs {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 8px;
+}
+
+.name-input {
+    width: 100%;
+    height: 45px;
+    border-radius: var(--border-radius);
+    font-size: 16px;
+    padding: 0 10px;
+    border: 2px solid var(--color-light);
+    outline: none;
+}
+
+.name-input:focus {
+    border: 2px solid var(--color-dark);
+}
+
+.email-error,
+.password-match-error {
+    color: var(--color-danger-dark)
+}

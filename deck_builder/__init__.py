@@ -46,6 +46,7 @@ def init_app():
         app.register_blueprint(create_deck_routes.create_deck_bp)
 
         # Create database models
+        db.drop_all()
         db.create_all()
 
         # Return the app
