@@ -59,7 +59,8 @@ def upload_text():
 
     # Create a new export
     new_export: Export = Export(
-        created_at=datetime.now()
+        created_at=datetime.now(),
+        user_id = current_user.id
     )
 
     db.session.add(new_export)
