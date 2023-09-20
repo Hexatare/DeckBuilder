@@ -69,7 +69,7 @@ def upload_text():
     # Create a new flashcard creator and start it
     FlashcardCreator(cards, new_export.id, app._get_current_object()).start() # pylint: disable=protected-access
 
-    return redirect(url_for('create_deck_bp.create_deck'))
+    return redirect(url_for('editor_bp.editor',id=new_export.id))
 
 
 @create_deck_bp.route('/create/upload/image', methods=['POST'])
