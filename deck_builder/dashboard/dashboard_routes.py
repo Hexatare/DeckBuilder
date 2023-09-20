@@ -6,6 +6,7 @@ The dashboard is where users can upload an image and receive the text file
 
 # Imports
 from flask import Blueprint, render_template
+from flask_login import login_required, current_user
 
 
 # Create the Blueprint
@@ -18,7 +19,11 @@ dashboard_bp: Blueprint = Blueprint(
 
 
 @dashboard_bp.route('/dashboard', methods=['GET'])
+@login_required
 def dashboard():
     """This route displays the dashboard"""
 
-    return render_template('dashboard.html')
+    # dates = Export.query.filter_by(user_id=current_user.id).all()
+    # dates = [dates.created_at for date in dates]
+    dates = ["22.3.2023", "13.12.1337"]
+    return render_template('dashboard.html',sessions=dates)

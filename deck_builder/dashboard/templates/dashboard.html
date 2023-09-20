@@ -43,29 +43,18 @@
         </div>
         <div class="page-divider"></div>
         <div class="page-content">
-            <div class="page-content-element-create">
-                <p class="create-plus">+</p>
-                <p class="create-text">Create new</p>
-            </div>
-            <div class="page-content-element">
-
-            </div>
-            <!--
-            <div class="input-section">
-                <input type="file" accept=".png, .jpg, .jpeg" class="picture-input hidden" id="picture-input">
-                <label for="picture-input" class="picture-input-label">
-                    <span class="input-text-normal">Click to upload or</span>
-                    <span class="input-text-colored">drag and drop</span>
-                </label>
-            </div>
-            <div class="input-section">
-                <textarea name="text-input" id="text-input" class="text-input"></textarea>
-                <button class="submit-text-button" id="submit-text">Submit text</button>
-            </div>
-            <div class="output-section">
-
-            </div>
-            -->
+            <ul class="page-content-element-list">
+                <li class="page-content-element-create">
+                    <p class="create-plus">+</p>
+                    <p class="create-text">Create new</p>
+                </li>
+                {% for item in sessions %}
+                <li class="page-content-element-session">
+                    <p class="reuse-date">{{ item }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="page-content-element"></div>
         </div>
     </main>
 </body>
