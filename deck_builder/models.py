@@ -51,6 +51,18 @@ class User(UserMixin, db.Model):
     def check_password(self, password: str) -> bool:
         """Function to check if the password is correct"""
         return check_password_hash(self.password, password)
+    
+    # Last login of the user
+    last_login = db.Column(
+        db.DateTime,
+        nullable=False
+    )
+
+    # Date the account was created
+    created_at = db.Column(
+        db.DateTime,
+        nullable=False
+    )
 
 
 class Export(db.Model):

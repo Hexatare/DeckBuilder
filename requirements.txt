@@ -1,11 +1,11 @@
 numpy 
-keras-ocr
 tensorflow
 astroid
 blinker
 click
 config
 dill
+easyocr
 Flask
 Flask-Login
 Flask-SQLAlchemy

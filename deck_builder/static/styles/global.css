@@ -1,0 +1,36 @@
+:root {
+    --color-primary: #3792CB;
+    --color-danger-light: #F69697;
+    --color-danger-dark: #FF2C2C;
+    --color-success: #B3CF99;
+    --color-warning: #F7D060;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-dark-variant: #677483;
+    --color-background: rgb(241, 241, 241);
+    --color-disabled: #ccccc4;
+    --box-shadow: rgba(0, 0, 0, 0.05) 5px 0px 15px, rgba(0, 0, 0, 0.03) 4px 0px 6px;
+    --font-family: 'Poppins', sans-serif;
+    --border-radius: 8px
+}
+
+*,
+::after,
+::before {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    color: var(--color-dark);
+}
+
+.divider {
+    width: 90%;
+    height: 1px;
+    background-color: var(--color-light)
+}
+
+.hidden {
+    display: none !important;
+}
