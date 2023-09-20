@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor - Deck Builder</title>
+    <meta name="description" content="Edit your cards">
+
+    <link rel="stylesheet" href="{{ url_for('editor_bp.static', filename='styles/editor.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="{{ url_for('editor_bp.static', filename='js/editor.js')}}" defer></script>
+</head>
+
+<body>
+    <aside class="navbar-wrapper">
+        <div class="navbar">
+            <a class="navbar-element" href="{{ url_for('dashboard_bp.dashboard') }}">
+                <p class="navbar-elemement-text">Dashboard</p>
+            </a>
+            <div class="divider"></div>
+            <a class="navbar-element">
+                <p class="navbar-elemement-text">Profile</p>
+            </a>
+            <div class="divider"></div>
+            <a class="navbar-element">
+                <p class="navbar-elemement-text">Account settings</p>
+            </a>
+            <div class="divider"></div>
+            <a class="navbar-element">
+                <p class="navbar-logout-element-text">Log out</p>
+            </a>
+        </div>
+    </aside>
+    <main class="main">
+        <div class="page-header">
+            <h1>Edit your cards</h1>
+        </div>
+        <div class="page-divider"></div>
+        <div class="page-content">
+            {% for card in cards %}
+            <div class="page-content-card">
+                <div class="page-content-card-front">
+                    {{ card[0] }}
+                </div>
+                <div class="page-content-card-back">
+                    {{ card[1] }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+
+</html>

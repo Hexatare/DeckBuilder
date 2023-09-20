@@ -16,6 +16,7 @@ from flask import (
     current_app as app
 )
 # pylint: disable=import-error
+from flask_login import login_required, current_user
 from deck_builder.flashcard_creator.flashcard_creator import FlashcardCreator
 from deck_builder.text_to_deck.chatgpt_api import prompt_chatgpt
 from deck_builder.ocr import ocr
@@ -34,6 +35,7 @@ create_deck_bp: Blueprint = Blueprint(
 
 
 @create_deck_bp.route('/create', methods=['GET'])
+@login_required
 def create_deck():
     """This function renders the template for the create deck route"""
 
@@ -41,6 +43,7 @@ def create_deck():
 
 
 @create_deck_bp.route('/create/upload/text', methods=['POST'])
+@login_required
 def upload_text():
     """This function handles the uploaded text"""
 
@@ -56,7 +59,8 @@ def upload_text():
 
     # Create a new export
     new_export: Export = Export(
-        created_at=datetime.now()
+        created_at=datetime.now(),
+        user_id = current_user.id
     )
 
     db.session.add(new_export)
@@ -65,10 +69,11 @@ def upload_text():
     # Create a new flashcard creator and start it
     FlashcardCreator(cards, new_export.id, app._get_current_object()).start() # pylint: disable=protected-access
 
-    return redirect(url_for('create_deck_bp.create_deck'))
+    return redirect(url_for('editor_bp.editor',id=new_export.id))
 
 
 @create_deck_bp.route('/create/upload/image', methods=['POST'])
+@login_required
 def upload_image():
     """This function turns the image into text using OCR"""
 

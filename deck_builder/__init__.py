@@ -37,6 +37,7 @@ def init_app():
         from .homepage import homepage_routes
         from .dashboard import dashboard_routes
         from .create_deck import create_deck_routes
+        from .editor import editor_routes
         # pylint: enable=import-outside-toplevel
 
         # Register blueprints
@@ -44,9 +45,10 @@ def init_app():
         app.register_blueprint(homepage_routes.homepage_bp)
         app.register_blueprint(dashboard_routes.dashboard_bp)
         app.register_blueprint(create_deck_routes.create_deck_bp)
+        app.register_blueprint(editor_routes.editor_bp)
 
         # Create database models
-        db.drop_all()
+        # db.drop_all()
         db.create_all()
 
         # Return the app

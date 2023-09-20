@@ -26,5 +26,5 @@ def dashboard():
     """This route displays the dashboard"""
 
     dates = Export.query.filter_by(user_id=current_user.id).all()
-    dates = [dates.created_at for date in dates]
+    dates = [date.created_at for date in dates]
     return render_template('dashboard.html',sessions=dates)
