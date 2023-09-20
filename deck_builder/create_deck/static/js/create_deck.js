@@ -87,6 +87,7 @@ const loadingIcon = document.getElementById('loading-icon');
 const submitImageTextButton = document.getElementById('submit-image-text');
 const submitImageTextButtonText = document.getElementById('submit-button-image-text');
 const loadingIconImageText = document.getElementById('loading-icon-image-text');
+const imageTextChatGPTError = document.getElementById('image-text-chatgpt-error');
 
 textInput.addEventListener('input', function () {
     if (textInput.value.length > 0) {
@@ -141,8 +142,22 @@ submitImageTextButton.addEventListener('click', function () {
             text: enteredText,
         })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                window.location.href = '/';
+            }
+            else if (response.status !== 500) {
+                console.log('Unknown error.');
+            }
+
+            return response.json();
+        })
         .then(data => {
-            console.log(data['success']);
+            imageTextChatGPTError.classList.remove('hidden');
+            imageTextChatGPTError.innerText = data['error'];
+            submitImageTextButton.disabled = false;
+            submitImageTextButton.classList.remove('loading');
+            loadingIconImageText.classList.add('hidden');
+            submitImageTextButtonText.classList.remove('hidden');
         });
 });

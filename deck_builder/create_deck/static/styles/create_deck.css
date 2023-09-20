@@ -379,3 +379,8 @@ body {
     cursor: not-allowed !important;
     background-color: var(--color-disabled) !important;
 }
+
+.submit-error,
+.chatgpt-error {
+    color: var(--color-danger-dark)
+}
