@@ -1,26 +1,6 @@
 const textInput = document.getElementById('text-input');
 const submitTextButton = document.getElementById('submit-text');
 
-submitTextButton.addEventListener('click', function () {
-    const enteredText = textInput.value;
-
-    fetch('/upload/text', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: {
-            text: enteredText,
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-            fileContents = data['file_contents'];
-
-            console.log(fileContents);
-        });
-});
-
 
 const pictureInput = document.getElementById('picture-input');
 

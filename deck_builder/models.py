@@ -77,11 +77,19 @@ class Export(db.Model):
         primary_key=True
     )
 
+    # User ID
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey('users.id'),
+        nullable=False
+    )
+    
     # When the export was created
     created_at = db.Column(
         db.DateTime,
         nullable=False
     )
+
 
 
 class Flashcard(db.Model):
@@ -120,3 +128,4 @@ class Flashcard(db.Model):
         db.DateTime,
         nullable=False
     )
+

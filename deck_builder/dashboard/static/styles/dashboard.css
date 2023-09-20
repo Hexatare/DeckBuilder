@@ -162,7 +162,14 @@ body {
     color: var(--color-danger-dark) !important;
 }
 
-.page-content-element-create {
+.page-content-element-list {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 90%;
+}
+.page-content-element-create, .page-content-element-session {
     display: flex;
     flex-direction: column;
     width: 150px;
@@ -175,6 +182,11 @@ body {
     cursor: pointer;
     transition-duration: 0.2s;
     transition-property: border;
+    margin: 10px;
+}
+
+.page-content-element-session {
+    border: 2px solid var(--color-info-dark);
 }
 
 .page-content-element-create:hover {
