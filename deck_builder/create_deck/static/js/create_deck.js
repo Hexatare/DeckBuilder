@@ -84,6 +84,7 @@ const textInput = document.getElementById('upload-text-input');
 const submitTextButton = document.getElementById('submit-text');
 const buttonText = document.getElementById('submit-button-text');
 const loadingIcon = document.getElementById('loading-icon');
+const textChatGPTError = document.getElementById('text-chatgpt-error');
 const submitImageTextButton = document.getElementById('submit-image-text');
 const submitImageTextButtonText = document.getElementById('submit-button-image-text');
 const loadingIconImageText = document.getElementById('loading-icon-image-text');
@@ -112,9 +113,23 @@ submitTextButton.addEventListener('click', function () {
             text: enteredText,
         })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                window.location.href = response.url;
+            }
+            else if (response.status !== 500) {
+                console.log('Unknown error.');
+            }
+
+            return response.json();
+        })
         .then(data => {
-            console.log(data['success']);
+            textChatGPTError.classList.remove('hidden');
+            textChatGPTError.innerText = data['error'];
+            submitTextButton.disabled = false;
+            submitTextButton.classList.remove('loading');
+            loadingIcon.classList.add('hidden');
+            submitImageTextButtonText.classList.remove('hidden');
         });
 });
 
@@ -144,7 +159,7 @@ submitImageTextButton.addEventListener('click', function () {
     })
         .then(response => {
             if (response.status === 200) {
-                window.location.href = '/';
+                window.location.href = response.url;
             }
             else if (response.status !== 500) {
                 console.log('Unknown error.');
