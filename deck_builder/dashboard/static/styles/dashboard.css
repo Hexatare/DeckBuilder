@@ -1,3 +1,10 @@
+a {
+    all: unset;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
 :root {
     --color-primary: #3792CB;
     --color-danger-light: #F69697;

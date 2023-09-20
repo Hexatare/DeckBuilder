@@ -7,6 +7,8 @@ The dashboard is where users can upload an image and receive the text file
 # Imports
 from flask import Blueprint, render_template
 from flask_login import login_required, current_user
+from deck_builder import db
+from deck_builder.models import Export
 
 
 # Create the Blueprint
