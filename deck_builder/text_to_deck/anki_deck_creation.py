@@ -1,25 +1,26 @@
 import unittest
 import re
 
-"""
-This function gives back a string which represents an Anki deck in textfile format.
-https://docs.ankiweb.net/importing/text-files.html
 
-Args:
-    cards (list of tuples): A list of tuples where each tuple contains to strings representing the front and the back of the card respectively. 
-
-Returns:
-    str: Anki deck string
-
-Raises:
-    ValueError: If cards don't match the expected format.
-"""
 def gpt_to_deck(cards):
+    """
+    This function gives back a string which represents an Anki deck in textfile format.
+    https://docs.ankiweb.net/importing/text-files.html
+
+    Args:
+        cards (list of tuples): A list of tuples where each tuple contains to strings representing the front and the back of the card respectively. 
+
+    Returns:
+        str: Anki deck string
+
+    Raises:
+        ValueError: If cards don't match the expected format.
+    """
     cards_as_deck = []
 
     try:
         iter(cards)
-    except:
+    except Exception:
         raise ValueError
     
     for card in cards:

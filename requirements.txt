@@ -1,5 +1,4 @@
 numpy 
-opencv-python
 tensorflow
 astroid
 blinker
@@ -17,8 +16,6 @@ Jinja2
 lazy-object-proxy
 MarkupSafe
 mccabe
-mysql
-mysqlclient
 openai
 Pillow
 platformdirs
