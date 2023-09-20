@@ -5,17 +5,22 @@ This file contains the routes for the create deck page
 
 # Imports
 import base64
+from datetime import datetime
 from flask import (
     Blueprint,
     render_template,
     request,
     jsonify,
+    redirect,
+    url_for,
     current_app as app
 )
 # pylint: disable=import-error
 from deck_builder.flashcard_creator.flashcard_creator import FlashcardCreator
 from deck_builder.text_to_deck.chatgpt_api import prompt_chatgpt
 from deck_builder.ocr import ocr
+from deck_builder.models import Export
+from deck_builder import db
 # pylint: enable=import-error
 
 
@@ -49,10 +54,18 @@ def upload_text():
     if not success:
         return jsonify(error=cards), 500
 
-    # Create a new flashcard creator and start it
-    FlashcardCreator(cards, app._get_current_object()).start() # pylint: disable=protected-access
+    # Create a new export
+    new_export: Export = Export(
+        created_at=datetime.now()
+    )
 
-    return jsonify(success=True), 200
+    db.session.add(new_export)
+    db.session.commit()
+
+    # Create a new flashcard creator and start it
+    FlashcardCreator(cards, new_export.id, app._get_current_object()).start() # pylint: disable=protected-access
+
+    return redirect(url_for('create_deck_bp.create_deck'))
 
 
 @create_deck_bp.route('/create/upload/image', methods=['POST'])

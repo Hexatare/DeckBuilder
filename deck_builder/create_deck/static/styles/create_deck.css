@@ -220,8 +220,10 @@ body {
 
 .upload-image-wrapper {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 150px;
+    margin-top: 10px;
 }
 
 .image-input {
@@ -253,6 +255,7 @@ body {
     gap: 8px;
     width: 100%;
     height: fit-content;
+    margin-top: 10px;
 }
 
 .upload-text-submit-button {
@@ -291,6 +294,15 @@ body {
     animation: spin 1s linear infinite;
 }
 
+.loading-icon-small {
+    border: 2px solid var(--color-dark);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    animation: spin 1s linear infinite;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -299,4 +311,76 @@ body {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.image-progress {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    border: 2px solid var(--color-info-dark);
+    border-radius: var(--border-radius);
+    padding: 0 12px;
+    gap: 12px;
+}
+
+.image-text-result {
+    width: 100%;
+    min-height: 150px;
+    max-height: 400px;
+    resize: none;
+    outline: none;
+    border: 2px solid var(--color-light);
+    border-radius: var(--border-radius);
+    padding: 10px
+}
+
+.image-text-result:hover {
+    border: 2px solid var(--color-info-dark);
+}
+
+.image-text-result:focus {
+    border: 2px solid var(--color-dark);
+}
+
+.image-text-result-heading {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.image-text-result-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+    gap: 8px;
+}
+
+.upload-image-text-submit-button {
+    width: 100%;
+    height: 50px;
+    border: 2px solid transparent;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.upload-image-text-submit-button:hover {
+    border: 2px solid var(--color-dark);
+}
+
+.upload-image-text-submit-button:disabled {
+    border: 2px solid transparent !important;
+    cursor: not-allowed !important;
+    background-color: var(--color-disabled) !important;
+}
+
+.submit-error,
+.chatgpt-error {
+    color: var(--color-danger-dark)
 }
