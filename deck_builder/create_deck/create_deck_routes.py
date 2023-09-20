@@ -16,6 +16,7 @@ from flask import (
     current_app as app
 )
 # pylint: disable=import-error
+from flask_login import login_required, current_user
 from deck_builder.flashcard_creator.flashcard_creator import FlashcardCreator
 from deck_builder.text_to_deck.chatgpt_api import prompt_chatgpt
 from deck_builder.ocr import ocr
@@ -34,6 +35,7 @@ create_deck_bp: Blueprint = Blueprint(
 
 
 @create_deck_bp.route('/create', methods=['GET'])
+@login_required
 def create_deck():
     """This function renders the template for the create deck route"""
 
@@ -41,6 +43,7 @@ def create_deck():
 
 
 @create_deck_bp.route('/create/upload/text', methods=['POST'])
+@login_required
 def upload_text():
     """This function handles the uploaded text"""
 
@@ -69,6 +72,7 @@ def upload_text():
 
 
 @create_deck_bp.route('/create/upload/image', methods=['POST'])
+@login_required
 def upload_image():
     """This function turns the image into text using OCR"""
 
