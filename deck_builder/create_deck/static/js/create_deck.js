@@ -9,6 +9,9 @@ const selectImage = document.getElementById('select-image-upload');
 const selectText = document.getElementById('select-text-input');
 const uploadImageWrapper = document.getElementById('upload-image-wrapper');
 const uploadTextWrapper = document.getElementById('upload-text-wrapper');
+const imageProgress = document.getElementById('image-progress');
+const imageTextResult = document.getElementById('image-text-result');
+const imageTextResultSection = document.getElementById('image-text-result-section');
 
 selectImage.addEventListener('click', function () {
     selectText.classList.remove('selected');
@@ -35,6 +38,8 @@ imageInput.addEventListener('change', function () {
 
 function sendImage() {
     const uploadedFile = imageInput.files[0];
+    imageInputLabel.classList.add('hidden');
+    imageProgress.classList.remove('hidden');
 
     if (uploadedFile) {
         const formData = new FormData();
@@ -46,7 +51,10 @@ function sendImage() {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data['text'])
+                imageProgress.classList.add('hidden');
+                imageTextResultSection.classList.remove('hidden');
+                imageTextResult.value = data['text']
+                imageTextResult.style.height = imageTextResult.scrollHeight + 'px';
             });
     }
 }
@@ -76,6 +84,11 @@ const textInput = document.getElementById('upload-text-input');
 const submitTextButton = document.getElementById('submit-text');
 const buttonText = document.getElementById('submit-button-text');
 const loadingIcon = document.getElementById('loading-icon');
+const textChatGPTError = document.getElementById('text-chatgpt-error');
+const submitImageTextButton = document.getElementById('submit-image-text');
+const submitImageTextButtonText = document.getElementById('submit-button-image-text');
+const loadingIconImageText = document.getElementById('loading-icon-image-text');
+const imageTextChatGPTError = document.getElementById('image-text-chatgpt-error');
 
 textInput.addEventListener('input', function () {
     if (textInput.value.length > 0) {
@@ -100,8 +113,66 @@ submitTextButton.addEventListener('click', function () {
             text: enteredText,
         })
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                window.location.href = response.url;
+            }
+            else if (response.status !== 500) {
+                console.log('Unknown error.');
+            }
+
+            return response.json();
+        })
         .then(data => {
-            console.log(data['success']);
+            textChatGPTError.classList.remove('hidden');
+            textChatGPTError.innerText = data['error'];
+            submitTextButton.disabled = false;
+            submitTextButton.classList.remove('loading');
+            loadingIcon.classList.add('hidden');
+            submitImageTextButtonText.classList.remove('hidden');
+        });
+});
+
+imageTextResult.addEventListener('input', function () {
+    if (imageTextResult.value.length > 0 && !submitImageTextButton.classList.contains('loading')) {
+        submitImageTextButton.disabled = false;
+    } else {
+        submitImageTextButton.disabled = true;
+    }
+});
+
+submitImageTextButton.addEventListener('click', function () {
+    submitImageTextButton.disabled = true;
+    submitImageTextButton.classList.add('loading');
+    submitImageTextButtonText.classList.add('hidden');
+    loadingIconImageText.classList.remove('hidden');
+    const enteredText = imageTextResult.value;
+
+    fetch('/create/upload/text', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            text: enteredText,
+        })
+    })
+        .then(response => {
+            if (response.status === 200) {
+                window.location.href = response.url;
+            }
+            else if (response.status !== 500) {
+                console.log('Unknown error.');
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            imageTextChatGPTError.classList.remove('hidden');
+            imageTextChatGPTError.innerText = data['error'];
+            submitImageTextButton.disabled = false;
+            submitImageTextButton.classList.remove('loading');
+            loadingIconImageText.classList.add('hidden');
+            submitImageTextButtonText.classList.remove('hidden');
         });
 });
