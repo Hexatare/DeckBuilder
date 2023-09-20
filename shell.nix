@@ -7,7 +7,6 @@
       python310Packages.pip
       python310Packages.tensorflow
       python310Packages.flask
-      python310Packages.opencv4
       python310Packages.flask-login
       python310Packages.flask-sqlalchemy
       python310Packages.numpy
