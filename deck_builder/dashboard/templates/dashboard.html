@@ -19,21 +19,21 @@
 <body>
     <aside class="navbar-wrapper">
         <div class="navbar">
-            <div class="navbar-element">
+            <a class="navbar-element" href="{{ url_for('dashboard_bp.dashboard') }}">
                 <p class="navbar-elemement-text">Dashboard</p>
-            </div>
+            </a>
             <div class="divider"></div>
-            <div class="navbar-element">
+            <a class="navbar-element">
                 <p class="navbar-elemement-text">Profile</p>
-            </div>
+            </a>
             <div class="divider"></div>
-            <div class="navbar-element">
+            <a class="navbar-element">
                 <p class="navbar-elemement-text">Account settings</p>
-            </div>
+            </a>
             <div class="divider"></div>
-            <div class="navbar-element">
+            <a class="navbar-element">
                 <p class="navbar-logout-element-text">Log out</p>
-            </div>
+            </a>
         </div>
     </aside>
     <main class="main">
@@ -44,14 +44,14 @@
         <div class="page-divider"></div>
         <div class="page-content">
             <ul class="page-content-element-list">
-                <li class="page-content-element-create">
+                <a class="page-content-element-create">
                     <p class="create-plus">+</p>
                     <p class="create-text">Create new</p>
-                </li>
+                </a>
                 {% for item in sessions %}
-                <li class="page-content-element-session">
+                <a class="page-content-element-session">
                     <p class="reuse-date">{{ item }}</p>
-                </li>
+                </a>
                 {% endfor %}
             </ul>
             <div class="page-content-element"></div>
