@@ -48,7 +48,7 @@ def init_app():
         app.register_blueprint(editor_routes.editor_bp)
 
         # Create database models
-        db.drop_all()
+        # db.drop_all()
         db.create_all()
 
         # Return the app
