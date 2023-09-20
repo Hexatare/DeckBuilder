@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DeckBuilder</title>
+
+    <link rel="stylesheet" href="{{ url_for('auth_bp.static', filename='styles/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
+
+    <script src="{{url_for('auth_bp.static', filename='js/login.js') }}" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="left">
+            <div class="left-header">
+                <h3 class="left-heading">Welcome back!</h3>
+                <p class="left-subheading">Please sign in to continue</p>
+            </div>
+            <div class="left-form">
+                <input type="email" class="email-input" id="email-input" placeholder="john@example.com">
+                <input type="password" class="password-input" id="password-input" placeholder="Password">
+                <p class="login-error hidden" id="login-error">Wrong email or password</p>
+                <button class="submit-form" id="submit-form" disabled>Log In</button>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - DeckBuilder</title>
+
+    <link rel="stylesheet" href="{{ url_for('auth_bp.static', filename='styles/signup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/global.css') }}">
+
+    <script src="{{url_for('auth_bp.static', filename='js/signup.js') }}" defer></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="left">
+            <div class="left-header">
+                <h3 class="left-heading">Sign Up</h3>
+                <p class="left-subheading">Please create an account to start using our service</p>
+            </div>
+            <div class="left-form">
+                <div class="name-inputs">
+                    <input type="text" class="name-input" id="first-name" placeholder="John">
+                    <input type="text" id="last-name" class="name-input" placeholder="Smith">
+                </div>
+                <input type="email" class="email-input" id="email-input" placeholder="john@example.com">
+                <p class="email-error hidden" id="email-error">It seems like this email is already in use.</p>
+                <input type="password" class="password-input" id="password-input" placeholder="Password">
+                <input type="password" class="password-input" id="confirm-password-input"
+                    placeholder="Confirm password">
+                <p class="password-match-error hidden" id="password-match-error">Passwords do not match</p>
+                <button class="submit-form" id="submit-form" disabled>Sign Up</button>
+            </div>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
