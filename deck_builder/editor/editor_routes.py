@@ -10,7 +10,7 @@ from flask import (
 )
 from flask_login import login_required, current_user
 # pylint: disable=import-error
-from deck_builder.models import Export
+from deck_builder.models import Flashcard
 from deck_builder import db
 # pylint: enable=import-error
 
@@ -26,8 +26,9 @@ editor_bp: Blueprint = Blueprint(
 
 
 @editor_bp.route('/editor/<int:id>', methods=['GET'])
-@login_required
+# @login_required
 def editor(id):
     """This function turns the image into text using OCR"""
-
-    return render_template("editor.html",id=id)
+    flashcards = Flashcard.query.filter_by(export_id=id).all()
+    cards = [(card.front,card.back) for card in flashcards]
+    return render_template("editor.html",id=id, cards=cards)
