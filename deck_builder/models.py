@@ -68,7 +68,7 @@ class Export(db.Model):
     # User ID
     user_id = db.Column(
         db.Integer,
-        db.ForeignKey('users.id')
+        db.ForeignKey('users.id'),
         nullable=False
     )
     
