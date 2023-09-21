@@ -19,21 +19,13 @@
 <body>
     <aside class="navbar-wrapper">
         <div class="navbar">
-            <div class="navbar-element">
+            <a class="navbar-element" hef="{{ url_for('dashboard_bp.dashboard') }}">
                 <p class="navbar-elemement-text">Dashboard</p>
-            </div>
+            </a>
             <div class="divider"></div>
-            <div class="navbar-element">
-                <p class="navbar-elemement-text">Profile</p>
-            </div>
-            <div class="divider"></div>
-            <div class="navbar-element">
-                <p class="navbar-elemement-text">Account settings</p>
-            </div>
-            <div class="divider"></div>
-            <div class="navbar-element">
+            <a class="navbar-element" href="{{ url_for('auth_bp.logout') }}">
                 <p class="navbar-logout-element-text">Log out</p>
-            </div>
+            </a>
         </div>
     </aside>
     <main class="main">

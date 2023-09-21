@@ -23,15 +23,7 @@
                 <p class="navbar-elemement-text">Dashboard</p>
             </a>
             <div class="divider"></div>
-            <a class="navbar-element">
-                <p class="navbar-elemement-text">Profile</p>
-            </a>
-            <div class="divider"></div>
-            <a class="navbar-element">
-                <p class="navbar-elemement-text">Account settings</p>
-            </a>
-            <div class="divider"></div>
-            <a class="navbar-element">
+            <a class="navbar-element" href="{{ url_for('auth_bp.logout') }}">
                 <p class="navbar-logout-element-text">Log out</p>
             </a>
         </div>
@@ -43,17 +35,18 @@
         </div>
         <div class="page-divider"></div>
         <div class="page-content">
-            <ul class="page-content-element-list">
-                <a class="page-content-element-create">
+            <div class="page-content-element-list">
+                <a class="page-content-element-create" href="{{ url_for('create_deck_bp.create_deck')}}">
                     <p class="create-plus">+</p>
                     <p class="create-text">Create new</p>
                 </a>
-                {% for item in sessions %}
-                <a class="page-content-element-session">
-                    <p class="reuse-date">{{ item }}</p>
+                {% for export in exports %}
+                <a class="page-content-element-session" href="{{ url_for('editor_bp.editor', id=export.id) }}">
+                    <p class="export-title">Export {{ export.id }}</p>
+                    <p class="export-date">{{ export.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
                 </a>
                 {% endfor %}
-            </ul>
+            </div>
             <div class="page-content-element"></div>
         </div>
     </main>
