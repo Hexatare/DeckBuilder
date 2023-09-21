@@ -1,9 +1,3 @@
-const downloadButton = document.getElementById('download-button');
-
-downloadButton.addEventListener('click', function() {
-  download_deck(1);
-});
-
 function download_deck(id) {
   fetch("/editor/download/"+id)
     .then(response => response.blob())
@@ -18,5 +12,5 @@ function download_deck(id) {
       window.URL.revokeObjectURL(blobURL);
       document.body.removeChild(link);
   });
-  console.log("function was executed")
+  console.log(id)
 }
