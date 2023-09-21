@@ -115,7 +115,8 @@ body {
     padding: 0 10px;
     transition-duration: .2s;
     transition-property: background-color;
-    cursor: pointer
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .navbar-element:hover {
@@ -123,7 +124,8 @@ body {
 }
 
 .navbar-logout-element-text {
-    color: var(--color-danger-dark) !important
+    color: var(--color-danger-dark) !important;
+    text-decoration: none;
 }
 
 .page-content-element-create {
