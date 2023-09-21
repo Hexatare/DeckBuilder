@@ -222,12 +222,20 @@ body {
 }
 
 button {
+    cursor: point;
     width: 200px;
     height: 40px;
     color: var(--color-dark);
     background: var(--color-white);
     border: 1px solid black;
     border-radius: var(--border-radius);
+    margin: 5px;
+    font-size: 1.2rem;
+}
+
+buttons {
+    display: flex;
+    width: 90%;
 }
 
 button:hover {
@@ -237,6 +245,7 @@ button:hover {
 .page-content-card {
     display: flex;
     width: 90%;
+    flex-direction: row;
 }
 
 .page-content-card-front, .page-content-card-back {
@@ -253,6 +262,7 @@ button:hover {
     min-height: 150px;
     text-align: left;
     overflow: auto;
+    box-shadow: 5px 5px 5px var(--color-light);
 }
 
 .trash-lid, .trash-container {
@@ -260,12 +270,13 @@ button:hover {
 }
 
 .icon-trash {
-  width: 48px;
-  height: 48px;
-  position: relative;
-  overflow: hidden;
-  margin-left: 25px;
-  margin-bottom: 25px;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .icon-trash .trash-lid {
@@ -311,45 +322,6 @@ button:hover {
   border-bottom-right-radius: 15%;
 }
 
-.icon-trash .trash-container:after {
-  content: "";
-  width: 110%;
-  height: 12%;
-  position: absolute;
-  left: 50%;
-  margin-left: -55%;
-  top: 0;
-  background-color: inherit;
-  border-bottom-left-radius: 45%;
-  border-bottom-right-radius: 45%;
-}
-
-.icon-trash .trash-line-1 {
-  width: 4%;
-  height: 50%;
-  position: absolute;
-  left: 38%;
-  margin-left: -2%;
-  bottom: 17%;
-  background-color: var(--color-background);
-}
-
-.icon-trash .trash-line-2 {
-  width: 4%;
-  height: 50%;
-  position: absolute;
-  left: 50%;
-  margin-left: -2%;
-  bottom: 17%;
-  background-color: var(--color-background);
-}
-
-.icon-trash .trash-line-3 {
-  width: 4%;
-  height: 50%;
-  position: absolute;
-  left: 62%;
-  margin-left: -2%;
-  bottom: 17%;
-  background-color: var(--color-background);
+.icon-trash:hover {
+    background-color: var(--color-light);
 }

@@ -34,6 +34,10 @@
         </div>
         <div class="page-divider"></div>
         <div class="page-content">
+            <div class="buttons">
+                <button id=download-button onclick="download_deck({{ id }})"> Download </button>
+                <button id=save-button onclick="save_deck()"> Save </button>
+            </div>
         <!-- this is an XSS needs to be changed in the future -->
             {% for card in cards %}
             <div class="page-content-card">
@@ -49,7 +53,6 @@
             </div>
             {% endfor %}
         </div>
-        <button id=download-button onclick="download_deck({{ id }})"> Download your deck! </button>
     </main>
 </body>
 
