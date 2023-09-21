@@ -27,8 +27,10 @@ editor_bp: Blueprint = Blueprint(
 
 @editor_bp.route('/editor/<int:id>', methods=['GET'])
 # @login_required
-def editor(id):
-    """This function turns the image into text using OCR"""
+def editor(id: int):
+    """
+    This function turns the image into text using OCR
+    """
     flashcards = Flashcard.query.filter_by(export_id=id).all()
     cards = [(card.front,card.back) for card in flashcards]
     return render_template("editor.html",id=id, cards=cards)
