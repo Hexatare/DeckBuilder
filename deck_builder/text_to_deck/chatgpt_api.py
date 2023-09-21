@@ -10,24 +10,24 @@ from dotenv import load_dotenv
 import openai
 
 # Load the .env file
-basedir = path.abspath(path.dirname(__file__))
-load_dotenv(path.join(basedir, '.env'))
+basedir = path.abspath(path.join(path.dirname(__file__), path.relpath("../..")))
+load_dotenv(path.join(basedir, ".env"))
 openai.api_key = environ.get("OPENAIAPIKEY")
+print(path.join(basedir, ".env"))
 
 # Use GPT-3.5 Turbo for now, maybe switch to GPT-4?
 MODEL_ENGINE = "gpt-3.5-turbo"
 
 
-def prompt_chatgpt(factual_text: str) -> tuple[bool, list[tuple] | str]:
+def prompt_chatgpt(factual_text: str) -> "tuple[bool, list[tuple] | str]":
     """
     This function prompts ChatGPT to create questions and answers from a text given by a user
     :param str factual_text: A factual text to create questions from
     :returns: A tuple with a string indicating if the actions was successful and if so, also a list
-    of tuples containing the questions with the answers  
+    of tuples containing the questions with the answers
     """
 
-    prompt: str = \
-    f"""I want you to generate a deck of flash cards about the contents of a factual text.
+    prompt: str = f"""I want you to generate a deck of flash cards about the contents of a factual text.
     If the contents of the text violates your TOS or if no text is provided or the text is too 
     short for the task, IGNORE the rest of the prompt and simply reply "I refuse".
 
@@ -49,34 +49,73 @@ def prompt_chatgpt(factual_text: str) -> tuple[bool, list[tuple] | str]:
     {factual_text}
     """
     # prompter = "Here's a text: \""+bigassstring+"\". Take important terms and make flashcards for them, formated as a list with tuples. Each tuple should contain the selected term and an unique description/meaning/connection as a string. DO NOT FORMAT THE RETURNED STRING - keep it one single line long. If anything goes against your TOS, just say \"I refuse.\"."
-    
-    message = [ {"role": "user", "content": 
-        prompt} ]
+
+    message = [{"role": "user", "content": prompt}]
 
     completion = openai.ChatCompletion.create(
         model=MODEL_ENGINE,
-        #max_token = 1024,
-        #stop=None,
+        # max_token = 1024,
+        # stop=None,
         temperature=0.7,
-        messages=message
+        messages=message,
     )
 
     response = completion.choices[0].message
     message.append(response)
 
-    #In case something in the generation goes wrong or if text goes against OpenAI's terms of service.
+    # In case something in the generation goes wrong or if text goes against OpenAI's terms of service.
     try:
         res = ast.literal_eval(response.content)
-        return True, res
+        if is_valid_cards(res):
+            return True, res
+        else:
+            return False, "There has been an error in our transformer. Try again."
     except SyntaxError:
-        message.append({"role": "user", "content": "Why couldn't the flashcards be generated? Explain the reason while using passive voice please."})
-        reason = openai.ChatCompletion.create(
-            model=MODEL_ENGINE,
-            #max_token = 1024,
-            #stop=None,
-            temperature=0.7,
-            messages=message
-         ).choices[0].message.content
+        message.append(
+            {
+                "role": "user",
+                "content": "Why couldn't the flashcards be generated? Explain the exact reason while using passive voice please.",
+            }
+        )
+        reason = (
+            openai.ChatCompletion.create(
+                model=MODEL_ENGINE,
+                # max_token = 1024,
+                # stop=None,
+                temperature=0.7,
+                messages=message,
+            )
+            .choices[0]
+            .message.content
+        )
         return False, reason
 
-# print(get_list("my name is timmy")) # Should return an error. Change to whatever desired text.
+
+def is_valid_cards(cards):
+    """
+    Checks if the output of the GPT is in the right format
+    """
+
+    if not isinstance(cards, list):
+        return False
+
+    if len(cards) < 1:
+        return False
+
+    for card in cards:
+        if not isinstance(card, tuple):
+            return False
+        if len(card) != 2:
+            return False
+        for side in card:
+            if not isinstance(side, str):
+                return False
+            if len(side) < 1:
+                return False
+
+    return True
+
+
+# print(
+#     prompt_chatgpt("hello")
+# )  # Should return an error. Change to whatever desired text.
