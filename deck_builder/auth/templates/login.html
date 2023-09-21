@@ -25,6 +25,8 @@
                 <p class="login-error hidden" id="login-error">Wrong email or password</p>
                 <button class="submit-form" id="submit-form" disabled>Log In</button>
             </div>
+            <div class="no-account">Don't have an account yet? <a class="signup-link"
+                    href="{{ url_for('auth_bp.signup')}}">Sign Up</a></div>
         </div>
         <div class="right"></div>
     </div>
