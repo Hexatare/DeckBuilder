@@ -25,6 +25,7 @@ dashboard_bp: Blueprint = Blueprint(
 def dashboard():
     """This route displays the dashboard"""
 
-    dates = Export.query.filter_by(user_id=current_user.id).all()
-    dates = [date.created_at for date in dates]
-    return render_template('dashboard.html',sessions=dates)
+    # Get the exports
+    exports = db.session.query(Export).filter_by(user_id=current_user.id).all()
+
+    return render_template('dashboard.html', exports=exports)

@@ -176,20 +176,36 @@ body {
     flex-wrap: wrap;
     width: 90%;
 }
-.page-content-element-create, .page-content-element-session {
+
+.page-content-element-create,
+.page-content-element-session {
     display: flex;
     flex-direction: column;
-    width: 150px;
-    height: 200px;
+    width: 300px;
+    height: 175px;
     border-radius: var(--border-radius);
     border: 2px dashed var(--color-info-dark);
     justify-content: center;
     align-items: center;
-    gap: 16px;
     cursor: pointer;
     transition-duration: 0.2s;
     transition-property: border;
     margin: 10px;
+}
+
+.page-content-element-create {
+    justify-content: center;
+    align-items: center;
+}
+
+.page-content-element-session {
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.export-title {
+    font-weight: 500;
 }
 
 .page-content-element-session {
