@@ -8,7 +8,8 @@ from flask import (
     Blueprint,
     render_template,
     request,
-    Response
+    Response,
+    jsonify
 )
 from flask_login import login_required, current_user
 # pylint: disable=import-error
@@ -33,7 +34,7 @@ editor_bp: Blueprint = Blueprint(
 def editor(id):
     """This function returns the view of the editor"""
     flashcards = Flashcard.query.filter_by(export_id=id).all()
-    cards = [(card.front.strip(),card.back.strip()) for card in flashcards]
+    cards = [(card.front.strip(),card.back.strip(),card.id) for card in flashcards]
     return render_template("editor.html",id=id, cards=cards)
 
 @editor_bp.route('/editor/download/<int:id>', methods=['GET'])
@@ -51,3 +52,25 @@ def editor_donwload(id):
             'Content-Disposition': 'attachment; filename=deck.txt'
         }
     )
+
+@editor_bp.route('/editor/save', methods=['POST'])
+@login_required
+def editor_update_card():
+    """This function updates a card"""
+    data: dict = request.get_json()
+    data = data["cards"]
+    for card in data:
+        flashcard = Flashcard.query.get(card["id"])
+        flashcard.front = card["front"]
+        flashcard.back = card["back"]
+    db.session.commit()
+    return jsonify({'message': 'Flashcard updated successfully'}), 200
+
+@editor_bp.route('/editor/remove/<int:card_id>', methods=['POST'])
+@login_required
+def editor_remove_card(card_id):
+    """This function removes a card"""
+    flashcard = Flashcard.query.get(card_id)
+    db.session.delete(flashcard)
+    db.session.commit()
+    return jsonify({'message': 'Flashcard removed successfully'}), 200
