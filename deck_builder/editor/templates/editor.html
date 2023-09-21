@@ -34,18 +34,25 @@
         </div>
         <div class="page-divider"></div>
         <div class="page-content">
+            <div class="buttons">
+                <button id=download-button onclick="download_deck({{ id }})"> Download </button>
+                <button id=save-button onclick="save_deck()"> Save </button>
+            </div>
+        <!-- this is an XSS needs to be changed in the future -->
             {% for card in cards %}
-            <div class="page-content-card">
-                <div class="page-content-card-front">
-                    {{ card[0] }}
-                </div>
-                <div class="page-content-card-back">
-                    {{ card[1] }}
+            <div class="page-content-card" id="{{ card[2] }}"">
+                <textarea class="page-content-card-front">{{ card[0] }}</textarea>
+                <textarea class="page-content-card-back">{{ card[1] }}</textarea>
+                <div class="icon-trash" style="float: left" onclick=delete_card(this)>
+                    <div class="trash-lid"></div>
+                    <div class="trash-container"></div>
+                    <div class="trash-line-1"></div>
+                    <div class="trash-line-2"></div>
+                    <div class="trash-line-3"></div>
                 </div>
             </div>
             {% endfor %}
         </div>
-        <button id=download-button onclick="download_deck({{ id }})"> Download your deck! </button>
     </main>
 </body>
 

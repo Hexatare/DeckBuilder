@@ -221,15 +221,107 @@ body {
     user-select: none;
 }
 
-#download-button {
+button {
+    cursor: point;
     width: 200px;
     height: 40px;
     color: var(--color-dark);
     background: var(--color-white);
     border: 1px solid black;
     border-radius: var(--border-radius);
+    margin: 5px;
+    font-size: 1.2rem;
 }
 
-#download-button:hover {
+buttons {
+    display: flex;
+    width: 90%;
+}
+
+button:hover {
+    background-color: var(--color-light);
+}
+
+.page-content-card {
+    display: flex;
+    width: 90%;
+    flex-direction: row;
+}
+
+.page-content-card-front, .page-content-card-back {
+    border: 2px solid var(--color-light);
+    outline: 0;
+    border-radius: var(--border-radius);
+    resize: none;
+    padding: 10px;
+    transition-property: border;
+    transition-duration: 0.2s;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50%;
+    min-height: 150px;
+    text-align: left;
+    overflow: auto;
+    box-shadow: 5px 5px 5px var(--color-light);
+}
+
+.trash-lid, .trash-container {
+    background-color: var(--color-dark);
+}
+
+.icon-trash {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    overflow: hidden;
+    margin-left: 0px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.icon-trash .trash-lid {
+  width: 62%;
+  height: 10%;
+  position: absolute;
+  left: 50%;
+  margin-left: -31%;
+  top: 10.5%;
+  border-top-left-radius: 80%;
+  border-top-right-radius: 80%;
+  -webkit-transform: rotate(-5deg);
+  -moz-transform: rotate(-5deg);
+  -ms-transform: rotate(-5deg);
+  transform: rotate(-5deg); 
+}
+
+.icon-trash .trash-lid:after {
+  content: "";
+  width: 26%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  margin-left: -13%;
+  margin-top: -10%;
+  background-color: inherit;
+  border-top-left-radius: 30%;
+  border-top-right-radius: 30%;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg); 
+}
+
+.icon-trash .trash-container {
+  width: 56%;
+  height: 65%;
+  position: absolute;
+  left: 50%;
+  margin-left: -28%;
+  bottom: 10%;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+}
+
+.icon-trash:hover {
     background-color: var(--color-light);
 }

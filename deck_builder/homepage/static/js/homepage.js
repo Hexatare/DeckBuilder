@@ -1,18 +1,12 @@
-// Get all the image containers
-const imageContainers = document.querySelectorAll('.image-text-wrapper');
+const currentURL = window.location.href;
 
-// Add event listeners to each image container
-imageContainers.forEach((container) => {
-    const image = container.querySelector('img');
-    const textbox = container.querySelector('.textbox');
+function redirect_login() {
+  const redirect = currentURL.substring(0, currentURL.lastIndexOf('/') + 1) + 'login';
+  window.location.href = redirect;
+}
 
-    // Show the textbox on mouseover
-    container.addEventListener('mouseover', () => {
-        textbox.style.display = 'flex';
-    });
-
-    // Hide the textbox on mouseout
-    container.addEventListener('mouseout', () => {
-        textbox.style.display = 'none';
-    });
-});
+function redirect_signup() {
+  const redirect = currentURL.substring(0, currentURL.lastIndexOf('/') + 1) + 'signup';
+  window.location.href = redirect;
+  console.log("what's happening");
+}

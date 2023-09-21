@@ -14,5 +14,6 @@
       python310Packages.mysqlclient
       python310Packages.openai
       python310Packages.easyocr
+      python310Packages.gunicorn
     ];
 }
