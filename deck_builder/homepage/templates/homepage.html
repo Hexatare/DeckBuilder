@@ -12,45 +12,57 @@
     -->
     <!--Temporary links-->
     <link rel="stylesheet" href="../static/styles/homepage.css">
+    <link rel="stylesheet" href="../../static/styles/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@600&display=swap" rel="stylesheet">
+    <script src="../static/js/homepage.js"></script>
 </head>
 
 <body>
     <div class="header">
-        <h1><center>DECK BUILDER (insert logo here actually)!</center></h1>
+        <img src="../static/img/logo.png" alt="Logo">
+        <div class="buttonsup">
+            <button class="login">Log In</button>
+            <button class="register">Register</button>
+        </div>
     </div>
-    <h2><center>What is DECK BUILDER?</center></h2>
-    <div class="description"><p>DECK BUILDER is a brand-new, AI-powered program 
-        that can make flashcards from BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH 
-        rest of the description HERE</p>
+    <div class="question">
+        <h1><center>What is Deck Builder?</center></h1>
+    </div>
+    <div class="description"><p>Deck Builder is a brand-new platform that uses the power of AI 
+        to generate flashcards for learning. All it needs is some text. Working with an analog 
+        source? Upload a photo and let the OCR do its work. Your flashcards will be quickly ready for usage.</p>
+        <p class="hoverinfo"><b>Hover your mouse over the images for more info!</b></p>
     </div>
     <div class="container">
         <div class="image-container">
             <div class="image-text-wrapper">
                 <img src="../static/img/ph1.png" alt="Image 1">
-                <p>Upload your photo/text.</p>
-                <div class="textbox"><p>Upload a photo, a screenshot, or your own text and let the AI do its magic.</p></div>
+                <div class="textbox">
+                    <div class="text">Upload an image or some text. You can edit it before letting the GPT-3.5-turbo 
+                        model analyze it.
+                    </div>
+                </div>
             </div>
             <div class="image-text-wrapper">
                 <img src="../static/img/ph2.png" alt="Image 2">
-                <p>Edit your flashcards.</p>
-                <div class="textbox"><p>Edit your returned flashcards or cut those you don't need.</p></div>
+                <div class="textbox">
+                    <div class="text">Our editor allows you to visualize your flaschards, edit or erase them. You'll 
+                        be able to save them in your account as well.
+                    </div>
+                </div>
             </div>
             <div class="image-text-wrapper">
                 <img src="../static/img/ph3.png" alt="Image 3">
-                <p>Download your flashcards!</p>
-                <div class="textbox"><p>They will be compatible with platforms such as Anki.</p></div>
+                <div class="textbox">
+                    <div class="text">Download your flaschards. They will be compatible with platforms such as 
+                        Anki!
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="button">
-        <button>Click here to begin!</button>
-    </div>
-
-    <script src="../static/js/homepage.js"></script>
     
 </body>
 
