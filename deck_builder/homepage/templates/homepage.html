@@ -18,8 +18,8 @@
     <div class="header">
         <img src="{{ url_for('homepage_bp.static', filename='img/logo.png')}}" alt="Logo">
         <div class="buttonsup">
-            <button class="login">Log In</button>
-            <button class="register">Register</button>
+            <button class="login" onclick='redirect_login()'>Log In</button>
+            <button class="register" onclick='redirect_signup()'>Register</button>
         </div>
     </div>
     <div class="question">
