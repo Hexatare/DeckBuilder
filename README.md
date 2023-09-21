@@ -12,3 +12,7 @@
 
 ## Gunicorn
 Important! Gunicorn runs the app on port 8000 instead of 5000. If port 5000 is configured for the server name in the .env file, this needs to be changed or a 404 page will be shown for every page.
+
+```
+  gunicorn wsgi:app
+```
