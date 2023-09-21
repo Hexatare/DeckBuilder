@@ -11,7 +11,7 @@ from flask import (
     request,
     jsonify
 )
-from flask_login import login_user, current_user
+from flask_login import login_user, current_user, login_required, logout_user
 # pylint: disable=import-error
 from deck_builder.models import User
 from deck_builder import login_manager, db
@@ -106,6 +106,14 @@ def submit_signup():
     login_user(new_user)
 
     return redirect(url_for('dashboard_bp.dashboard'))
+
+
+@auth_bp.route('/logout', methods=['GET'])
+@login_required
+def logout():
+    logout_user()
+
+    return redirect(url_for('auth_bp.login'))
 
 
 @login_manager.user_loader
