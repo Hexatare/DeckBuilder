@@ -40,10 +40,10 @@
             </div>
         <!-- this is an XSS needs to be changed in the future -->
             {% for card in cards %}
-            <div class="page-content-card">
+            <div class="page-content-card" id="{{ card[2] }}"">
                 <textarea class="page-content-card-front">{{ card[0] }}</textarea>
                 <textarea class="page-content-card-back">{{ card[1] }}</textarea>
-                <div class="icon-trash" style="float: left">
+                <div class="icon-trash" style="float: left" onclick=delete_card(this)>
                     <div class="trash-lid"></div>
                     <div class="trash-container"></div>
                     <div class="trash-line-1"></div>
