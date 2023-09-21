@@ -1,4 +1,5 @@
 function download_deck(id) {
+  save_deck();
   fetch("/editor/download/"+id)
     .then(response => response.blob())
     .then(blob => {
