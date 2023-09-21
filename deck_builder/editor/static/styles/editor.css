@@ -221,7 +221,7 @@ body {
     user-select: none;
 }
 
-#download-button {
+button {
     width: 200px;
     height: 40px;
     color: var(--color-dark);
@@ -230,6 +230,27 @@ body {
     border-radius: var(--border-radius);
 }
 
-#download-button:hover {
+button:hover {
     background-color: var(--color-light);
+}
+
+.page-content-card {
+    display: flex;
+    width: 90%;
+}
+
+.page-content-card-front, .page-content-card-back {
+    border: 2px solid var(--color-light);
+    outline: 0;
+    border-radius: var(--border-radius);
+    resize: none;
+    padding: 10px;
+    transition-property: border;
+    transition-duration: 0.2s;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 50%;
+    min-height: 150px;
+    text-align: left;
+    overflow: auto;
 }

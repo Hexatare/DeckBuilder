@@ -42,14 +42,11 @@
         </div>
         <div class="page-divider"></div>
         <div class="page-content">
+        <!-- this is an XSS needs to be changed in the future -->
             {% for card in cards %}
             <div class="page-content-card">
-                <div class="page-content-card-front">
-                    {{ card[0] }}
-                </div>
-                <div class="page-content-card-back">
-                    {{ card[1] }}
-                </div>
+                <textarea class="page-content-card-front">{{ card[0] }}</textarea>
+                <textarea class="page-content-card-back">{{ card[1] }}</textarea>
             </div>
             {% endfor %}
         </div>

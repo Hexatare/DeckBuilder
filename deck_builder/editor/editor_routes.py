@@ -33,7 +33,7 @@ editor_bp: Blueprint = Blueprint(
 def editor(id):
     """This function returns the view of the editor"""
     flashcards = Flashcard.query.filter_by(export_id=id).all()
-    cards = [(card.front,card.back) for card in flashcards]
+    cards = [(card.front.strip(),card.back.strip()) for card in flashcards]
     return render_template("editor.html",id=id, cards=cards)
 
 @editor_bp.route('/editor/download/<int:id>', methods=['GET'])
