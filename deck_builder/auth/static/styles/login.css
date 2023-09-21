@@ -102,3 +102,12 @@ body,
     color: var(--color-danger-dark);
     margin-bottom: 16px;
 }
+
+.signup-link {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.no-account {
+    margin-top: 10px;
+}
