@@ -23,15 +23,7 @@
                 <p class="navbar-elemement-text">Dashboard</p>
             </a>
             <div class="divider"></div>
-            <a class="navbar-element">
-                <p class="navbar-elemement-text">Profile</p>
-            </a>
-            <div class="divider"></div>
-            <a class="navbar-element">
-                <p class="navbar-elemement-text">Account settings</p>
-            </a>
-            <div class="divider"></div>
-            <a class="navbar-element">
+            <a class="navbar-element" href="{{ url_for('auth_bp.logout') }}">
                 <p class="navbar-logout-element-text">Log out</p>
             </a>
         </div>
